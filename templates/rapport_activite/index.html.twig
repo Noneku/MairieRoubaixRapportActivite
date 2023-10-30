@@ -3,30 +3,38 @@
 {% block body %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h1 class="text-center">Formulaire Rapport d'Activité</h1>
-                {{ form_start(form, { 'attr': {'class': 'form'} }) }}
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ form_row(form.missionPrincipale, { 'attr': {'class': 'form-control'} }) }}
-                    </div>
-                    <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        {{ form_start(form, { 'attr': {'class': 'form'} }) }}
+                        <div class="form-group">
+                            {{ form_row(form.missionPrincipale, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
                         <div class="form-group">
                             {{ form_row(form.indicateur, { 'attr': {'class': 'form-control'} }) }}
-                            {{ form_row(form.realisation, { 'attr': {'class': 'form-control'} }) }}
-                            {{ form_row(form.perspective, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
                             {{ form_row(form.indicateurFile, { 'attr': {'class': 'form-control-file'} }) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.realisation, { 'attr': {'class': 'form-control'} }) }}
                             {{ form_row(form.realisationFile, { 'attr': {'class': 'form-control-file'} }) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.perspective, { 'attr': {'class': 'form-control'} }) }}
                             {{ form_row(form.perspectiveFile, { 'attr': {'class': 'form-control-file'} }) }}
                         </div>
+                        <div class="form-group">
+                            {{ form_row(form.donneesRH, { 'attr': {'class': 'form-control', 'disabled': 'disabled'} }) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.donneesFinance, { 'attr': {'class': 'form-control', 'disabled': 'disabled'} }) }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </div>
+                        {{ form_end(form) }}
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-                {{ form_end(form) }}
             </div>
         </div>
     </div>

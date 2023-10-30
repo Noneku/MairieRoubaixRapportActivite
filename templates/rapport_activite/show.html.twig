@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RapportActivite{% endblock %}
+
+{% block body %}
+    <h1>RapportActivite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rapport_activite.id }}</td>
+            </tr>
+            <tr>
+                <th>MissionPrincipale</th>
+                <td>{{ rapport_activite.missionPrincipale }}</td>
+            </tr>
+            <tr>
+                <th>Indicateur</th>
+                <td>{{ rapport_activite.indicateur }}</td>
+            </tr>
+            <tr>
+                <th>Realisation</th>
+                <td>{{ rapport_activite.realisation }}</td>
+            </tr>
+            <tr>
+                <th>Perspective</th>
+                <td>{{ rapport_activite.perspective }}</td>
+            </tr>
+            <tr>
+                <th>DonneesFinance</th>
+                <td>{{ rapport_activite.donneesFinance }}</td>
+            </tr>
+            <tr>
+                <th>DonneesRH</th>
+                <td>{{ rapport_activite.donneesRH }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ rapport_activite.status }}</td>
+            </tr>
+            <tr>
+                <th>IndicateurFile</th>
+                <td>{{ rapport_activite.indicateurFile }}</td>
+            </tr>
+            <tr>
+                <th>RealisationFile</th>
+                <td>{{ rapport_activite.realisationFile }}</td>
+            </tr>
+            <tr>
+                <th>PerspectiveFile</th>
+                <td>{{ rapport_activite.perspectiveFile }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rapport_activite_edit', {'id': rapport_activite.id}) }}">edit</a>
+{% endblock %}
