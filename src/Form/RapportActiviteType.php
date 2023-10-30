@@ -19,7 +19,6 @@ class RapportActiviteType extends AbstractType
             ->add('perspective')
             ->add('donneesFinance')
             ->add('donneesRH')
-            ->add('status')
             ->add('indicateurFile', FileType::class, [
                 'required' => false, // Permet de rendre le champ facultatif
                 'label' => 'Fichier pour Indicateur', // Label personnalisé

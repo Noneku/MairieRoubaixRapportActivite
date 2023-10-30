@@ -1,9 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Créer un nouveau rapport</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-    {{ form_end(form) }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">Formulaire Rapport d'Activité</h1>
+                {{ form_start(form, { 'attr': {'class': 'form'} }) }}
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_row(form.missionPrincipale, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_row(form.indicateur, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_row(form.realisation, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_row(form.perspective, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_row(form.indicateurFile, { 'attr': {'class': 'form-control-file'} }) }}
+                            {{ form_row(form.realisationFile, { 'attr': {'class': 'form-control-file'} }) }}
+                            {{ form_row(form.perspectiveFile, { 'attr': {'class': 'form-control-file'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
