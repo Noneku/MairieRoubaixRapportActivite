@@ -37,7 +37,6 @@ class RapportActiviteType extends AbstractType
                 'required' => false,
                 'label' => 'Fichier pour Indicateur',
                 'data_class' => null,
-                'disabled' => true
             ])
             ->add('realisationFile', FileType::class, [
                 'required' => false, // Permet de rendre le champ facultatif
