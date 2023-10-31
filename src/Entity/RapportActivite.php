@@ -33,7 +33,7 @@ class RapportActivite
     private ?string $donneesRH = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $status = null;
+    private ?string $status = 'En cour';
 
     #[ORM\Column(type: Types::BLOB, nullable: true)]
     private $indicateurFile = null;

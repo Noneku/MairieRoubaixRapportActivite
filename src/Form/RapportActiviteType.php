@@ -35,15 +35,19 @@ class RapportActiviteType extends AbstractType
             ])
             ->add('indicateurFile', FileType::class, [
                 'required' => false,
-                'label' => 'Fichier pour Indicateur'
+                'label' => 'Fichier pour Indicateur',
+                'data_class' => null,
+                'disabled' => true
             ])
             ->add('realisationFile', FileType::class, [
                 'required' => false, // Permet de rendre le champ facultatif
-                'label' => 'Fichier pour Réalisation', // Label personnalisé
+                'label' => 'Fichier pour Réalisation',
+                'data_class' => null, 
             ])
             ->add('perspectiveFile', FileType::class, [
                 'required' => false, // Permet de rendre le champ facultatif
-                'label' => 'Fichier pour Perspective', // Label personnalisé
+                'label' => 'Fichier pour Perspective',
+                'data_class' => null, // Label personnalisé
             ]);
     }
 
