@@ -15,14 +15,14 @@ class RapportActiviteCrudController extends AbstractCrudController
         return RapportActivite::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id'),
-            TextField::new('title'),
+            TextField::new('mission_principale'),
             TextEditorField::new('description'),
         ];
     }
-    */
+    
 }
