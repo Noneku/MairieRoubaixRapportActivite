@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<h1 class="text-center">Formulaire Rapport d'Activité</h1>
+				<div class="card">
+					<div class="card-body">
+						{{ form_start(form, { 'attr': {'class': 'form'} }) }}
+						<div class="form-group">
+							{{ form_row(form.missionPrincipale, { 'attr': {'class': 'form-control'} }) }}
+						</div>
+						<div class="form-group">
+							{{ form_row(form.indicateur, { 'attr': {'class': 'form-control', 'placeholder': 'Veuillez entrer votre texte ici' } }) }}
+							{{ form_row(form.indicateurFile, { 'attr': {'class': 'form-control-file', 'placeholder': 'Fichier pour Indicateur'} }) }}
+						</div>
+						<div class="form-group">
+							{{ form_row(form.realisation, { 'attr': {'class': 'form-control', 'placeholder': 'Veuillez entrer votre texte ici' } }) }}
+							{{ form_row(form.realisationFile, { 'attr': {'class': 'form-control-file', 'placeholder': 'Fichier pour Réalisation'} }) }}
+						</div>
+						<div class="form-group">
+							{{ form_row(form.perspective, { 'attr': {'class': 'form-control', 'placeholder': 'Veuillez entrer votre texte ici' } }) }}
+							{{ form_row(form.perspectiveFile, { 'attr': {'class': 'form-control-file', 'placeholder': 'Fichier pour Perspective'} }) }}
+						</div>
+						<div class="form-group">
+							{{ form_row(form.donneesRH, { 'attr': {'class': 'form-control textRH', 'placeholder': 'Remplissable par la Direction des Ressources Humaines', 'disabled': 'disabled' } }) }}
+						</div>
+						<div class="form-group">
+							{{ form_row(form.donneesFinance, { 'attr': {'class': 'form-control textFinance', 'placeholder': 'Remplissable par la Direction des Finances', 'disabled': 'disabled' } }) }}
+						</div>
+						<div class="text-center">
+							<button type="button" id="editer" class="btn btn-warning">Editer</button>
+							<button type="submit" class="btn btn-success" id="valider" disabled>Valider</button>
+						</div>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}
+		<script src="{{ asset('scripts/editRapportForm.js') }}"></script>
+	{% endblock %}
+{% endblock %}
