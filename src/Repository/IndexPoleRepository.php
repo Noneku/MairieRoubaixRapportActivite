@@ -36,6 +36,16 @@ class IndexPoleRepository extends ServiceEntityRepository
 //        ;
 //    }
 
+public function findByUrl($url)
+    {
+        return $this->createQueryBuilder('ip')
+        ->select('ip.urlIndex')
+        ->where('ip.urlIndex = :url')
+        ->setParameter('url', $url)
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
+
 //    public function findOneBySomeField($value): ?IndexPole
 //    {
 //        return $this->createQueryBuilder('i')
