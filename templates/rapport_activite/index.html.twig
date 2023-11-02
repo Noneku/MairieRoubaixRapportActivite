@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="text-center">Formulaire Rapport d'Activité</h1>
+                <h1 class="text-center">Formulaire Activite : {{ urlIndex }}</h1>
                 <div class="card">
                     <div class="card-body">
                         {{ form_start(form, { 'attr': {'class': 'form'} }) }}
@@ -24,10 +24,10 @@
                             {{ form_row(form.perspectiveFile, { 'attr': {'class': 'form-control-file', 'placeholder': 'Fichier pour Perspective'} }) }}
                         </div>
                         <div class="form-group">
-                            {{ form_row(form.donneesRH, { 'attr': {'class': 'form-control', 'placeholder': 'Veuillez entrer votre texte ici', 'disabled': 'disabled'} }) }}
+                            {{ form_row(form.donneesRH, { 'attr': {'class': 'form-control', 'disabled': 'disabled'} }) }}
                         </div>
                         <div class="form-group">
-                            {{ form_row(form.donneesFinance, { 'attr': {'class': 'form-control', 'placeholder': 'Veuillez entrer votre texte ici', 'disabled': 'disabled'} }) }}
+                            {{ form_row(form.donneesFinance, { 'attr': {'class': 'form-control', 'disabled': 'disabled'} }) }}
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
