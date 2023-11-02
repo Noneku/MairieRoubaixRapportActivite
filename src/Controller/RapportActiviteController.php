@@ -14,9 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 class RapportActiviteController extends AbstractController
-{
+{   
     
     #[Route('/{url}', name: 'app_rapport_activite_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SessionInterface $session, WordDocumentGenerator $wordDocumentGenerator,IndexPoleRepository $indexPoleRepository ,$url): Response
@@ -48,7 +47,9 @@ class RapportActiviteController extends AbstractController
             // Clean up temporary files
             unlink($wordFile);
 
-            return $response;
+            if($response){
+               return $this->redirectToRoute('app_rapport_activite_edit', ['id' => $rapportActivite->getId()], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->render('rapport_activite/index.html.twig', [
@@ -58,7 +59,7 @@ class RapportActiviteController extends AbstractController
         ]);
     }
 
-    #[Route('*/{id}/edit', name: 'app_rapport_activite_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_rapport_activite_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EntityManagerInterface $entityManager, $id, WordDocumentGenerator $wordDocumentGenerator): Response
     {
         //Get ID of rapportActivite and compare this with parameter in URL 
@@ -76,6 +77,7 @@ class RapportActiviteController extends AbstractController
              $perspectiveFile = $form->get('perspectiveFile')->getData();
  
              // Persist the RapportActivite entity
+             $rapportActivite->setStatus('Terminer');
              $entityManager->persist($rapportActivite);
              $entityManager->flush();
  
@@ -89,9 +91,6 @@ class RapportActiviteController extends AbstractController
  
              // Clean up temporary files
              unlink($wordFile);
- 
-             return $response;
-
         }
 
         return $this->render('rapport_activite/edit.html.twig', [
