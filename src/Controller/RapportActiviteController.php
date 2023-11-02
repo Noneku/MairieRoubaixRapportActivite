@@ -43,14 +43,19 @@ class RapportActiviteController extends AbstractController
             $response = new Response(file_get_contents($wordFile));
             $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
             $response->headers->set('Content-Disposition', 'attachment; filename="rapport_activite.docx"');
-
+            
             // Clean up temporary files
             unlink($wordFile);
 
-            if($response){
-               return $this->redirectToRoute('app_rapport_activite_edit', ['id' => $rapportActivite->getId()], Response::HTTP_SEE_OTHER);
-            }
+            return $this->redirectToRoute('app_rapport_activite_edit', [
+                'id' => $rapportActivite->getId(),
+                'url' => $url,
+            ]);
+
         }
+        
+
+
 
         return $this->render('rapport_activite/index.html.twig', [
             'rapport_activite' => $rapportActivite,
@@ -59,7 +64,7 @@ class RapportActiviteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_rapport_activite_edit', methods: ['GET', 'POST'])]
+    #[Route('/{url}/{id}/edit', name: 'app_rapport_activite_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EntityManagerInterface $entityManager, $id, WordDocumentGenerator $wordDocumentGenerator): Response
     {
         //Get ID of rapportActivite and compare this with parameter in URL 
