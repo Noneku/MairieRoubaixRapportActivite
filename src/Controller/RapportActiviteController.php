@@ -40,16 +40,21 @@ class RapportActiviteController extends AbstractController
             $wordFile = $wordDocumentGenerator->generateDocument($rapportActivite, $indicateurFile, $realisationFile, $perspectiveFile);
 
             // Donwload the file to format .docx
-            $response = new Response(file_get_contents($wordFile));
-            $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-            $response->headers->set('Content-Disposition', 'attachment; filename="rapport_activite.docx"');
+            $responseFile = new Response(file_get_contents($wordFile));
+            $responseFile->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+            $responseFile->headers->set('Content-Disposition', "attachment; filename=rapport_activite_{$url}.docx");
 
             // Clean up temporary files
             unlink($wordFile);
 
-            if($response){
-               return $this->redirectToRoute('app_rapport_activite_edit', ['id' => $rapportActivite->getId()], Response::HTTP_SEE_OTHER);
-            }
+            return $responseFile;
+            
+        $responseRedirect = new Response($this->redirectToRoute('app_rapport_activite_edit', [
+                 'id' => $rapportActivite->getId(),
+                 'url' => $url
+             ]));
+
+             return $responseRedirect;
         }
 
         return $this->render('rapport_activite/index.html.twig', [
@@ -59,7 +64,7 @@ class RapportActiviteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_rapport_activite_edit', methods: ['GET', 'POST'])]
+    #[Route('/{url}/{id}/edit', name: 'app_rapport_activite_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EntityManagerInterface $entityManager, $id, WordDocumentGenerator $wordDocumentGenerator): Response
     {
         //Get ID of rapportActivite and compare this with parameter in URL 
@@ -87,7 +92,7 @@ class RapportActiviteController extends AbstractController
              // Handle the response, for example, you can send the file as a download
              $response = new Response(file_get_contents($wordFile));
              $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-             $response->headers->set('Content-Disposition', 'attachment; filename="rapport_activite_{$url}.docx"');
+             $response->headers->set('Content-Disposition', 'attachment; filename="rapport_activite.docx"');
  
              // Clean up temporary files
              unlink($wordFile);
