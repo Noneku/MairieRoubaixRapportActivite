@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Activer le formulaire lorsque le bouton "Editer" est cliqué
     const editerButton = document.getElementById("editer");
     const validerButton = document.getElementById("valider");
+
     editerButton.addEventListener("click", function() {
         form.querySelectorAll("input, textarea:not(.textRH):not(.textFinance)").forEach(function(input) {
 
@@ -16,4 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
         editerButton.setAttribute("disabled", true);
         validerButton.removeAttribute("disabled");
     });
+
+   
 });
