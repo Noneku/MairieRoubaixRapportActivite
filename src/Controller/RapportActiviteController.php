@@ -49,14 +49,12 @@ class RapportActiviteController extends AbstractController
 
             return $responseFile;
             
-        $responseRedirect = new Response($this->redirectToRoute('app_rapport_activite_edit', [
-                 'id' => $rapportActivite->getId(),
-                 'url' => $url
-             ]));
-
-             return $responseRedirect;
+        // $responseRedirect = new Response($this->redirectToRoute('app_rapport_activite_edit', [
+        //          'id' => $rapportActivite->getId(),
+        //          'url' => $url
+        //      ]));
         }
-
+        
         return $this->render('rapport_activite/index.html.twig', [
             'rapport_activite' => $rapportActivite,
             'form' => $form->createView(),

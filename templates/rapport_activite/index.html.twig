@@ -30,7 +30,7 @@
                             {{ form_row(form.donneesFinance, { 'attr': {'class': 'form-control', 'disabled': 'disabled'} }) }}
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" id="submitButton" class="btn btn-primary">Enregistrer</button>
                         </div>
                         {{ form_end(form) }}
                     </div>
@@ -38,4 +38,7 @@
             </div>
         </div>
     </div>
+    {% block javascripts %}
+		<script src="{{ asset('scripts/submitButtonRedirecto.js') }}"></script>
+	{% endblock %}
 {% endblock %}
