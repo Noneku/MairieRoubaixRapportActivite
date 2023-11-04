@@ -35,7 +35,7 @@ class IndexPoleRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
-
+//Check if the $url exist in database
 public function findByUrl($url)
     {
         return $this->createQueryBuilder('ip')
