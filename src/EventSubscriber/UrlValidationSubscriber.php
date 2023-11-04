@@ -26,9 +26,13 @@ class UrlValidationSubscriber implements EventSubscriberInterface
         $controller = $event->getController();
         $request = $event->getRequest();
 
+        //Fetch current URL
         $checkUrl = $request->attributes->get('url');
+        
+        //Use the function "findByUrl" for check the current URL exist in database
         $urlInDataBase = $this->indexPoleRepository->findByUrl($checkUrl);
-
+        
+        //Redirect the user on ErrorPage, if the URL doesn't exist
         if ($checkUrl !== $urlInDataBase["urlIndex"]) {
             $response = new RedirectResponse('/error_url');
             $event->setController(function () use ($response) {

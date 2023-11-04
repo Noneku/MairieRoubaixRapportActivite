@@ -18,5 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
         validerButton.removeAttribute("disabled");
     });
 
-   
+    validerButton.addEventListener("click", () => {
+        setTimeout(() => {
+            window.location.href = "/succees";
+          }, "2000");
+    });
 });

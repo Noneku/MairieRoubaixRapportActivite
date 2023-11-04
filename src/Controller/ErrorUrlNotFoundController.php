@@ -15,4 +15,12 @@ class ErrorUrlNotFoundController extends AbstractController
             'controller_name' => 'ErrorUrlNotFoundController',
         ]);
     }
+
+    #[Route('/succees', name: 'app_succees')]
+    public function succees(): Response
+    {
+        return $this->render('error_url_not_found/succees.html.twig', [
+            'controller_name' => 'ErrorUrlNotFoundController',
+        ]);
+    }
 }
