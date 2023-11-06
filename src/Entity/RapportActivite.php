@@ -44,7 +44,7 @@ class RapportActivite
     #[ORM\Column(type: Types::BLOB, nullable: true)]
     private $perspectiveFile = null;
 
-    #[ORM\OneToOne(inversedBy: 'rapportActivite', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne]
     private ?IndexPole $urlIndex = null;
 
     public function getId(): ?int
@@ -184,8 +184,5 @@ class RapportActivite
         return $this;
     }
 
-    public function __toString(): string
-    {
-        return (string) $this->urlIndex->getIndexName();
-    }
+    
 }
