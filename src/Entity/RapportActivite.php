@@ -2,16 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\RapportActiviteRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RapportActiviteRepository;
 
 #[ORM\Entity(repositoryClass: RapportActiviteRepository::class)]
 class RapportActivite
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -46,6 +47,9 @@ class RapportActivite
 
     #[ORM\ManyToOne]
     private ?IndexPole $urlIndex = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?DateTimeInterface $date = null;
 
     public function getId(): ?int
     {
@@ -184,5 +188,20 @@ class RapportActivite
         return $this;
     }
 
-    
+        public function __toString()
+    {
+        return $this->id;
+    }
+
+        public function getDate(): ?\DateTimeInterface
+        {
+            return $this->date;
+        }
+
+        public function setDate(\DateTimeInterface $date): static
+        {
+            $this->date = $date;
+
+            return $this;
+        }
 }

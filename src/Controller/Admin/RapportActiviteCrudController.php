@@ -21,7 +21,7 @@ class RapportActiviteCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            // IdField::new('id'),
             // TextField::new('mission_principale'),
             // TextField::new('missionPrincipale'),
             // TextField::new('indicateur'),

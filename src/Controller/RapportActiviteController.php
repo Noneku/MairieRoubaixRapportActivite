@@ -3,19 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\IndexPole;
-use App\Service\UrlChecker;
 use App\Entity\RapportActivite;
 use App\Form\RapportActiviteType;
-use App\Repository\IndexPoleRepository;
 use App\Service\WordDocumentGenerator;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-use function PHPSTORM_META\type;
 
 class RapportActiviteController extends AbstractController
 {   
@@ -35,6 +31,7 @@ class RapportActiviteController extends AbstractController
             
             // Persist the RapportActivite entity
             $rapportActivite->setUrlIndex($indexPole);
+            $rapportActivite->setDate(new DateTime());
             $entityManager->persist($rapportActivite);
             $entityManager->flush();
             
@@ -81,7 +78,7 @@ class RapportActiviteController extends AbstractController
              // Handle the response, for example, you can send the file as a download
              $responseFile = new Response(file_get_contents($wordFile));
              $responseFile->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-             $responseFile->headers->set('Content-Disposition', 'attachment; filename="rapport_activite.docx"');
+             $responseFile->headers->set('Content-Disposition', 'attachment; filename="rapport_activite_N°' .$rapportActivite->getId() .".docx");
  
              // Clean up temporary files
              unlink($wordFile);
