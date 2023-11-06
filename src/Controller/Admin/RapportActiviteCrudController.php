@@ -22,13 +22,13 @@ class RapportActiviteCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
-            TextField::new('mission_principale'),
-            TextField::new('missionPrincipale'),
-            TextField::new('indicateur'),
-            TextField::new('realisation'),
-            TextField::new('perspective'),
-            TextField::new('donneesFinance'),
-            TextField::new('donneesRH'),
+            // TextField::new('mission_principale'),
+            // TextField::new('missionPrincipale'),
+            // TextField::new('indicateur'),
+            // TextField::new('realisation'),
+            // TextField::new('perspective'),
+            // TextField::new('donneesFinance'),
+            // TextField::new('donneesRH'),
             TextField::new('status'),
             AssociationField::new('urlIndex')
         ];

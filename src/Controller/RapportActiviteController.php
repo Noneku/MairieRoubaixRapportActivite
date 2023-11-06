@@ -14,19 +14,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use function PHPSTORM_META\type;
+
 class RapportActiviteController extends AbstractController
 {   
     
     #[Route('/{url}', name: 'app_rapport_activite_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager,$url): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, $url): Response
     {
         $rapportActivite = new RapportActivite();
+        $indexPoleRepository = $entityManager->getRepository(IndexPole::class);
+        $indexPole = $indexPoleRepository->findOneBySomeField($url);
+
+
         $form = $this->createForm(RapportActiviteType::class, $rapportActivite);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             
             // Persist the RapportActivite entity
+            $rapportActivite->setUrlIndex($indexPole);
             $entityManager->persist($rapportActivite);
             $entityManager->flush();
             

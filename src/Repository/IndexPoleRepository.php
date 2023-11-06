@@ -46,13 +46,13 @@ public function findByUrl($url)
         ->getOneOrNullResult();
     }
 
-//    public function findOneBySomeField($value): ?IndexPole
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findOneBySomeField($value): ?IndexPole
+   {
+       return $this->createQueryBuilder('i')
+           ->andWhere('i.urlIndex = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }
