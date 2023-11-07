@@ -22,9 +22,6 @@ class IndexPole
     #[ORM\ManyToOne(inversedBy: 'indexPoles')]
     private ?Pole $pole = null;
 
-    #[ORM\OneToOne(mappedBy: 'urlIndex', cascade: ['persist', 'remove'])]
-    private ?RapportActivite $rapportActivite = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -66,31 +63,9 @@ class IndexPole
         return $this;
     }
 
-    public function getRapportActivite(): ?RapportActivite
-    {
-        return $this->rapportActivite;
-    }
-
-    public function setRapportActivite(?RapportActivite $rapportActivite): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($rapportActivite === null && $this->rapportActivite !== null) {
-            $this->rapportActivite->setUrlIndex(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($rapportActivite !== null && $rapportActivite->getUrlIndex() !== $this) {
-            $rapportActivite->setUrlIndex($this);
-        }
-
-        $this->rapportActivite = $rapportActivite;
-
-        return $this;
-    }
-
         public function __toString(): string
     {
-        return (string) $this->id; 
+        return (string) $this->indexName; 
     }
 
 }

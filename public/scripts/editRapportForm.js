@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Désactiver le formulaire au chargement de la page
     const form = document.querySelector(".form");
     form.querySelectorAll("input, textarea").forEach(function(input) {
-        input.setAttribute("disabled", true);
-    });
+        input.setAttribute("disabled", true)});
 
     // Activer le formulaire lorsque le bouton "Editer" est cliqué
     const editerButton = document.getElementById("editer");
@@ -18,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
         validerButton.removeAttribute("disabled");
     });
 
-    validerButton.addEventListener("click", () => {
-        setTimeout(() => {
+    form.addEventListener("submit", () => {
+        setTimeout(() => {       
             window.location.href = "/succees";
           }, "2000");
     });

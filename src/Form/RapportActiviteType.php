@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class RapportActiviteType extends AbstractType
 {
@@ -39,14 +40,14 @@ class RapportActiviteType extends AbstractType
                 'data_class' => null,
             ])
             ->add('realisationFile', FileType::class, [
-                'required' => false, // Permet de rendre le champ facultatif
+                'required' => false,
                 'label' => 'Fichier pour Réalisation',
                 'data_class' => null, 
             ])
             ->add('perspectiveFile', FileType::class, [
-                'required' => false, // Permet de rendre le champ facultatif
+                'required' => false,
                 'label' => 'Fichier pour Perspective',
-                'data_class' => null, // Label personnalisé
+                'data_class' => null, 
             ]);
     }
 

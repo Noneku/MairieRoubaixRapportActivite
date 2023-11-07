@@ -75,6 +75,6 @@ class Pole
 
     public function __toString(): string
     {
-        return (string) $this->id;
+        return (string) $this->poleName;
     }
 }

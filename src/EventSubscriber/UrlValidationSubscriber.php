@@ -28,7 +28,6 @@ class UrlValidationSubscriber implements EventSubscriberInterface
 
         //Fetch current URL
         $checkUrl = $request->attributes->get('url');
-        
         //Use the function "findByUrl" for check the current URL exist in database
         $urlInDataBase = $this->indexPoleRepository->findByUrl($checkUrl);
         
