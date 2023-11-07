@@ -6,8 +6,11 @@ use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RapportActiviteRepository;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: RapportActiviteRepository::class)]
+#[Vich\Uploadable]
 class RapportActivite
 {
     #[ORM\Id]
@@ -37,6 +40,7 @@ class RapportActivite
     private ?string $status = 'En cour';
 
     #[ORM\Column(type: Types::BLOB, nullable: true)]
+    // #[Vich\UploadableField(mapping: 'file_upload', fileNameProperty: 'indicateurFile')]
     private $indicateurFile = null;
 
     #[ORM\Column(type: Types::BLOB, nullable: true)]
