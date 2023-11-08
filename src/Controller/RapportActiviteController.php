@@ -61,14 +61,15 @@ class RapportActiviteController extends AbstractController
 
         $form = $this->createForm(RapportActiviteType::class, $rapportActivite);
         $form->handleRequest($request);
+        
+        // Handle file uploads if needed
+        $indicateurFile = $rapportActivite->getIndicateurFile();
+        $realisationFile = $rapportActivite->getRealisationFile();
+        $perspectiveFile = $rapportActivite->getPerspectiveFile();
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-             // Handle file uploads if needed
-             $indicateurFile = $form->get('indicateurFile')->getData();
-             $realisationFile = $form->get('realisationFile')->getData();
-             $perspectiveFile = $form->get('perspectiveFile')->getData();
- 
+            
              // Persist the RapportActivite entity
              $rapportActivite->setStatus('Terminer');
              $entityManager->persist($rapportActivite);
@@ -82,7 +83,7 @@ class RapportActiviteController extends AbstractController
              $responseFile->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
              $responseFile->headers->set('Content-Disposition', 'attachment; filename="rapport_activite_N°' . $rapportActivite->getId() .".docx");
  
-            //  // Clean up temporary files
+            // Clean up temporary files
              unlink($wordFile);
 
              return $responseFile;
