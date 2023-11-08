@@ -10,6 +10,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: RapportActiviteRepository::class)]
+#[Vich\Uploadable]
 class RapportActivite
 {
     #[ORM\Id]
@@ -36,16 +37,25 @@ class RapportActivite
     private ?string $donneesRH = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $status = 'En cour';
+    private ?string $status = 'En cours';
 
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private $indicateurFile;
+    #[Vich\UploadableField(mapping: 'file_upload_indicateur', fileNameProperty: 'indicateurFile')]
+    private ?File $indicateurFile = null;
 
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private $realisationFile = null;
+    #[Vich\UploadableField(mapping: 'file_upload_realisation', fileNameProperty: 'realisationFile')]
+    private ?File $realisationFile = null;
 
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private $perspectiveFile = null;
+    #[Vich\UploadableField(mapping: 'file_upload_perspective', fileNameProperty: 'perspectiveFile')]
+    private ?File $perspectiveFile = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $indicateurFileName = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $realisationFileName = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $perspectiveFileName = null;
 
     #[ORM\ManyToOne]
     private ?IndexPole $urlIndex = null;
@@ -142,40 +152,34 @@ class RapportActivite
         return $this;
     }
 
-    public function getIndicateurFile()
+    public function getIndicateurFileName(): ?string
     {
-        return $this->indicateurFile;
+        return $this->indicateurFileName;
     }
 
-    public function setIndicateurFile($indicateurFile): static
+    public function setIndicateurFileName(?string $indicateurFileName): void
     {
-        $this->indicateurFile = $indicateurFile;
-
-        return $this;
+        $this->indicateurFileName = $indicateurFileName;
     }
 
-    public function getRealisationFile()
+    public function getRealisationFileName(): ?string
     {
-        return $this->realisationFile;
+        return $this->realisationFileName;
     }
 
-    public function setRealisationFile($realisationFile): static
+    public function setRealisationFileName(?string $realisationFileName): void
     {
-        $this->realisationFile = $realisationFile;
-
-        return $this;
+        $this->realisationFileName = $realisationFileName;
     }
 
-    public function getPerspectiveFile()
+    public function getPerspectiveFileName(): ?string
     {
-        return $this->perspectiveFile;
+        return $this->perspectiveFileName;
     }
 
-    public function setPerspectiveFile($perspectiveFile): static
+    public function setPerspectiveFileName(?string $perspectiveFileName): void
     {
-        $this->perspectiveFile = $perspectiveFile;
-
-        return $this;
+        $this->perspectiveFileName = $perspectiveFileName;
     }
 
     public function getUrlIndex(): ?IndexPole
@@ -190,20 +194,50 @@ class RapportActivite
         return $this;
     }
 
-        public function __toString()
+    public function __toString()
     {
         return $this->id;
     }
 
-        public function getDate(): ?\DateTimeInterface
-        {
-            return $this->date;
-        }
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
 
-        public function setDate(\DateTimeInterface $date): static
-        {
-            $this->date = $date;
+    public function setDate(\DateTimeInterface $date): static
+    {
+        $this->date = $date;
 
-            return $this;
-        }
+        return $this;
+    }
+
+    public function getIndicateurFile(): ?File
+    {
+        return $this->indicateurFile;
+    }
+
+    public function setIndicateurFile(?File $indicateurFile = null): void
+    {
+        $this->indicateurFile = $indicateurFile;
+    }
+
+    public function getRealisationFile(): ?File
+    {
+        return $this->realisationFile;
+    }
+
+    public function setRealisationFile(?File $realisationFile = null): void
+    {
+        $this->realisationFile = $realisationFile;
+    }
+
+    public function getPerspectiveFile(): ?File
+    {
+        return $this->perspectiveFile;
+    }
+
+    public function setPerspectiveFile(?File $perspectiveFile = null): void
+    {
+        $this->perspectiveFile = $perspectiveFile;
+    }
 }
