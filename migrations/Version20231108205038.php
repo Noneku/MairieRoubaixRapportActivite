@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20231106104415 extends AbstractMigration
+final class Version20231108205038 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20231106104415 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE rapport_activite DROP INDEX UNIQ_6CB5B597E6531CE8, ADD INDEX IDX_6CB5B597E6531CE8 (url_index_id)');
+        $this->addSql('ALTER TABLE rapport_activite CHANGE indicateur_file indicateur_file LONGTEXT DEFAULT NULL, CHANGE realisation_file realisation_file LONGTEXT DEFAULT NULL, CHANGE perspective_file perspective_file LONGTEXT DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE rapport_activite DROP INDEX IDX_6CB5B597E6531CE8, ADD UNIQUE INDEX UNIQ_6CB5B597E6531CE8 (url_index_id)');
+        $this->addSql('ALTER TABLE rapport_activite CHANGE indicateur_file indicateur_file LONGBLOB DEFAULT NULL, CHANGE realisation_file realisation_file LONGBLOB DEFAULT NULL, CHANGE perspective_file perspective_file LONGBLOB DEFAULT NULL');
     }
 }
