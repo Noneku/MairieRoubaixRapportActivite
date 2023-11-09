@@ -1,0 +1,9 @@
+{% block field_perspectiveFile %}
+    {% if entity.instance.perspectiveFileName %}
+        <a href="{{ asset('uploads/files/perspective/' ~ entity.instance.perspectiveFileName) }}" download>
+            <button>Télécharger</button>
+        </a>
+    {% else %}
+        <span>Aucun fichier</span>
+    {% endif %}
+{% endblock %}

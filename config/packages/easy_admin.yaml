@@ -1,0 +1,5 @@
+easy_admin:
+    entities:
+        RapportActivite:  # Remplacez 'VotreEntite' par le nom de votre entité
+            class: App\Entity\RapportActivite
+    debug: true
