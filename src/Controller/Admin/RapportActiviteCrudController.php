@@ -31,7 +31,7 @@ class RapportActiviteCrudController extends AbstractCrudController
             // TextField::new('perspective'),
             // TextField::new('donneesFinance'),
             // TextField::new('donneesRH'),
-            TextField::new('status'),
+            TextField::new('status', 'Etat'),
             DateTimeField::new('date')
             ->setFormat('dd-MM-Y HH:mm')
             ->setFormTypeOption('disabled', true),

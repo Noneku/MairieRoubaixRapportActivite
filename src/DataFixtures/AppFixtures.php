@@ -2,8 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\IndexPole;
 use App\Entity\Pole;
+use App\Entity\User;
+use App\Entity\IndexPole;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -87,6 +88,13 @@ class AppFixtures extends Fixture
                 $manager->flush();
             }
         //Flush in DataBase Pole
+        $manager->flush();
+
+        $user = new User();
+        $user->setUsername('admin');
+        $user->setPassword('admin');
+
+        $manager->persist($user);
         $manager->flush();
     }
 }
