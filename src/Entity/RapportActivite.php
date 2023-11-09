@@ -39,13 +39,13 @@ class RapportActivite
     #[ORM\Column(length: 255)]
     private ?string $status = 'En cours';
 
-    #[Vich\UploadableField(mapping: 'file_upload_indicateur', fileNameProperty: 'indicateurFile')]
+    #[Vich\UploadableField(mapping: 'file_upload_indicateur', fileNameProperty: 'indicateurFileName')]
     private ?File $indicateurFile = null;
 
-    #[Vich\UploadableField(mapping: 'file_upload_realisation', fileNameProperty: 'realisationFile')]
+    #[Vich\UploadableField(mapping: 'file_upload_realisation', fileNameProperty: 'realisationFileName')]
     private ?File $realisationFile = null;
 
-    #[Vich\UploadableField(mapping: 'file_upload_perspective', fileNameProperty: 'perspectiveFile')]
+    #[Vich\UploadableField(mapping: 'file_upload_perspective', fileNameProperty: 'perspectiveFileName')]
     private ?File $perspectiveFile = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

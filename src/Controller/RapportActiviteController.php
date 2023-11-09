@@ -2,18 +2,19 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\IndexPole;
 use App\Entity\RapportActivite;
 use App\Form\RapportActiviteType;
+use Vich\UploaderBundle\Entity\File;
 use App\Service\WordDocumentGenerator;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Vich\UploaderBundle\Handler\UploadHandler;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RapportActiviteController extends AbstractController
 {   
@@ -30,6 +31,11 @@ class RapportActiviteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $indicateurFile = $form->get('indicateurFile')->getData();
+
+            if($indicateurFile instanceof File){
+                echo("yes");
+            }
             
             // Persist the RapportActivite entity
             $rapportActivite->setUrlIndex($indexPole);

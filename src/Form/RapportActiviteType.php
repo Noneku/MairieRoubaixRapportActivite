@@ -34,7 +34,7 @@ class RapportActiviteType extends AbstractType
             ->add('donneesRH', TextareaType::class, [
                 'label' => 'Données Ressources Humaines'
             ])
-            ->add('indicateurFile', VichFileFileType::class, [
+            ->add('indicateurFile', VichFileType::class, [
                 'required' => false,
                 'label' => 'Fichier pour Indicateur',
                 'data_class' => null,
