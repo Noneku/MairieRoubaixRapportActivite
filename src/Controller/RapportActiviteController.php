@@ -14,14 +14,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 class RapportActiviteController extends AbstractController
 {
     private $params;
+    private $uploaderHelper;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(ParameterBagInterface $params, UploaderHelper $uploaderHelper)
     {
         $this->params = $params;
+        $this->uploaderHelper = $uploaderHelper;
     }
 
     #[Route('/{url}', name: 'app_rapport_activite_new', methods: ['GET', 'POST'])]
@@ -86,7 +89,6 @@ class RapportActiviteController extends AbstractController
             try {
                 // Specify the directory in the public folder
                 $publicDirectory = $this->params->get('kernel.project_dir') . '/public/';
-                $wordDocumentPath = 'uploads/word_files/'; // Adjust the path as needed
 
                 // Generate the Word document using the WordDocumentGenerator service
                 $wordDocument = $wordDocumentGenerator->generateDocument(
@@ -94,7 +96,6 @@ class RapportActiviteController extends AbstractController
                     $indicateurFile,
                     $realisationFile,
                     $perspectiveFile,
-                    $publicDirectory . $wordDocumentPath
                 );
 
                 // Load the generated Word document into PHPWord

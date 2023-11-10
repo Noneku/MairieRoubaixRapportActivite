@@ -1,6 +1,6 @@
 {% block field_rapportActiviteFile %}
     {% if entity.instance.rapportActiviteFileName %}
-        <a href="{{ asset('rapportActiviteFiles/' ~ entity.instance.rapportActiviteFileName) }}" download>
+        <a href="{{ asset('./public/' ~ entity.instance.rapportActiviteFileName) }}" download>
             <button>Télécharger</button>
         </a>
     {% else %}
