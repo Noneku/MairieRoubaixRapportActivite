@@ -1,8 +1,41 @@
 vich_uploader:
-    db_driver: orm
+   db_driver: orm
 
-    mappings:
-       file_upload:
-           uri_prefix: /uploads/files
-           upload_destination: '%kernel.project_dir%/public/uploads/files'
-           namer: Vich\UploaderBundle\Naming\OrignameNamer
+   metadata:
+      type: attribute
+
+   mappings:
+      file_upload_indicateur:
+         uri_prefix: /uploads/files/indicateur
+         upload_destination: "%kernel.project_dir%/public/uploads/files/indicateur"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true
+
+      file_upload_realisation:
+         uri_prefix: /uploads/files/realisation
+         upload_destination: "%kernel.project_dir%/public/uploads/files/realisation"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true
+
+      file_upload_perspective:
+         uri_prefix: /uploads/files/perspective
+         upload_destination: "%kernel.project_dir%/public/uploads/files/perspective"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true
+
+      file_upload_rapport:
+         uri_prefix: '/uploads/files/rapportActivite'
+         upload_destination: '%kernel.project_dir%/public/uploads/files/rapportActivite'
+
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true

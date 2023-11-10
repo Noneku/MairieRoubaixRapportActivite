@@ -31,6 +31,14 @@ class UrlValidationSubscriber implements EventSubscriberInterface
         //Use the function "findByUrl" for check the current URL exist in database
         $urlInDataBase = $this->indexPoleRepository->findByUrl($checkUrl);
         
+        // Check if the current URL is the login route
+        // if ($checkUrl === 'login') {
+        //     $response = new RedirectResponse('/login');
+        //     $event->setController(function () use ($response) {
+        //         return $response;
+        //     }); // Allow access to the login route
+        // }
+
         //Redirect the user on ErrorPage, if the URL doesn't exist
         if ($checkUrl !== $urlInDataBase["urlIndex"]) {
             $response = new RedirectResponse('/error_url');

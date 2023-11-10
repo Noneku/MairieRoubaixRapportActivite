@@ -34,17 +34,17 @@ class RapportActiviteType extends AbstractType
             ->add('donneesRH', TextareaType::class, [
                 'label' => 'Données Ressources Humaines'
             ])
-            ->add('indicateurFile', FileType::class, [
+            ->add('indicateurFile', VichFileType::class, [
                 'required' => false,
                 'label' => 'Fichier pour Indicateur',
                 'data_class' => null,
             ])
-            ->add('realisationFile', FileType::class, [
+            ->add('realisationFile', VichFileType::class, [
                 'required' => false,
                 'label' => 'Fichier pour Réalisation',
                 'data_class' => null, 
             ])
-            ->add('perspectiveFile', FileType::class, [
+            ->add('perspectiveFile', VichFileType::class, [
                 'required' => false,
                 'label' => 'Fichier pour Perspective',
                 'data_class' => null, 

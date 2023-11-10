@@ -1,0 +1,9 @@
+{% block field_indicateurFile %}
+    {% if entity.instance.indicateurFileName %}
+        <a href="{{ asset('uploads/files/indicateur/' ~ entity.instance.indicateurFileName) }}" download>
+            <button>Télécharger</button>
+        </a>
+    {% else %}
+        <span>Aucun fichier</span>
+    {% endif %}
+{% endblock %}

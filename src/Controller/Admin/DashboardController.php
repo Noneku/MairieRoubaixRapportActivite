@@ -6,6 +6,7 @@ use App\Entity\Pole;
 use App\Entity\IndexPole;
 use App\Controller\Admin\PoleCrudController;
 use App\Entity\RapportActivite;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -55,6 +56,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Poles', 'fa fa-tags', Pole::class);
         yield MenuItem::linkToCrud('IndexPole', 'fa fa-tags', IndexPole::class);
         yield MenuItem::linkToCrud('Rapport-Activté', 'fa fa-tags', RapportActivite::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fa fa-tags', User::class);
 
         // Vous pouvez ajouter d'autres éléments de menu ici
     }

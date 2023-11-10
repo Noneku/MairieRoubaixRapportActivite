@@ -1,0 +1,9 @@
+{% block field_realisationFile %}
+    {% if entity.instance.realisationFileName %}
+        <a href="{{ asset('uploads/files/realisation/' ~ entity.instance.realisationFileName) }}" download>
+            <button>Télécharger</button>
+        </a>
+    {% else %}
+        <span>Aucun fichier</span>
+    {% endif %}
+{% endblock %}

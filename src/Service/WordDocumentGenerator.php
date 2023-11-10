@@ -21,10 +21,15 @@ class WordDocumentGenerator
         $section->addText('Perspective: ' . $rapportActivite->getPerspective());
 
         // Génération du document Word
-        $filename = 'rapport_activite.docx';
+        $filename = 'rapport_activite_'. $rapportActivite->getId() . '.docx';
         $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($filename);
 
         return $filename;
+    }
+
+    public function loadDocument($wordFilePath)
+    {
+        return IOFactory::load($wordFilePath);
     }
 }
