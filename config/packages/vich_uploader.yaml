@@ -1,36 +1,42 @@
 vich_uploader:
-    db_driver: orm
+   db_driver: orm
 
-    metadata:
-        type: attribute
+   metadata:
+      type: attribute
 
-    mappings:
-        file_upload_indicateur:
+   mappings:
+      file_upload_indicateur:
+         uri_prefix: /uploads/files/indicateur
+         upload_destination: "%kernel.project_dir%/public/uploads/files/indicateur"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-           uri_prefix: /uploads/files/indicateur
-           upload_destination: '%kernel.project_dir%/public/uploads/files/indicateur'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true
 
-           inject_on_load: false
-           delete_on_update: true
-           delete_on_remove: true
+      file_upload_realisation:
+         uri_prefix: /uploads/files/realisation
+         upload_destination: "%kernel.project_dir%/public/uploads/files/realisation"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-        file_upload_realisation:
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true
 
-           uri_prefix: /uploads/files/realisation
-           upload_destination: '%kernel.project_dir%/public/uploads/files/realisation'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+      file_upload_perspective:
+         uri_prefix: /uploads/files/perspective
+         upload_destination: "%kernel.project_dir%/public/uploads/files/perspective"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-           inject_on_load: false
-           delete_on_update: true
-           delete_on_remove: true
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true
 
-        file_upload_perspective:
-        
-           uri_prefix: /uploads/files/perspective
-           upload_destination: '%kernel.project_dir%/public/uploads/files/perspective'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+      file_upload_rapportActivite:
+         uri_prefix: /uploads/files/rapportActivite
+         upload_destination: "%kernel.project_dir%/public/uploads/files/rapportActivite"
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-           inject_on_load: false
-           delete_on_update: true
-           delete_on_remove: true
+         inject_on_load: false
+         delete_on_update: true
+         delete_on_remove: true

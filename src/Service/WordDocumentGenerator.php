@@ -27,4 +27,9 @@ class WordDocumentGenerator
 
         return $filename;
     }
+
+    public function loadDocument($wordFilePath)
+    {
+        return IOFactory::load($wordFilePath);
+    }
 }

@@ -37,6 +37,10 @@ class RapportActiviteCrudController extends AbstractCrudController
                 ->setFormTypeOption('disabled', true),
             AssociationField::new('urlIndex'),
 
+            // TextEditorField::new('indicateurFileName', 'Indicateur File')
+            // ->setTemplatePath('admin/indicateur_file_widget.html.twig')
+            // ->hideOnForm(),
+
             TextEditorField::new('indicateurFileName', 'Indicateur File')
                 ->setTemplatePath('admin/indicateur_file_widget.html.twig')
                 ->hideOnForm(),
@@ -47,7 +51,11 @@ class RapportActiviteCrudController extends AbstractCrudController
 
             TextEditorField::new('perspectiveFileName', 'Perspective File')
                 ->setTemplatePath('admin/perspective_file_widget.html.twig')
-                ->hideOnForm()
+                ->hideOnForm(),
+
+            TextEditorField::new('rapportActiviteFileName', 'Rapport File')
+            ->setTemplatePath('admin/rapportActivite_file_widget.html.twig')
+            ->hideOnForm()
         ];
     }
 }

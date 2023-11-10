@@ -6,6 +6,7 @@ use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RapportActiviteRepository;
+use PhpOffice\PhpWord\PhpWord;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -48,6 +49,8 @@ class RapportActivite
     #[Vich\UploadableField(mapping: 'file_upload_perspective', fileNameProperty: 'perspectiveFileName')]
     private ?File $perspectiveFile = null;
 
+    private ?PhpWord $rapportActiviteFile = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $indicateurFileName = null;
 
@@ -56,6 +59,9 @@ class RapportActivite
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $perspectiveFileName = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $rapportActiviteFileName = null;
 
     #[ORM\ManyToOne]
     private ?IndexPole $urlIndex = null;
@@ -182,6 +188,16 @@ class RapportActivite
         $this->perspectiveFileName = $perspectiveFileName;
     }
 
+    public function getRapportActiviteFileName(): string
+    {
+        return $this->rapportActiviteFileName;
+    }
+
+    public function setRapportActiviteFileName(?string $rapportActiviteFileName): void
+    {
+        $this->rapportActiviteFileName = $rapportActiviteFileName;
+    }
+
     public function getUrlIndex(): ?IndexPole
     {
         return $this->urlIndex;
@@ -239,5 +255,13 @@ class RapportActivite
     public function setPerspectiveFile(?File $perspectiveFile = null): void
     {
         $this->perspectiveFile = $perspectiveFile;
+    }
+
+    public function getRapportActiviteFile(): ?PhpWord {
+    	return $this->rapportActiviteFile;
+    }
+
+    public function setRapportActiviteFile(?PhpWord $rapportActiviteFile = null): void {
+    	$this->rapportActiviteFile = $rapportActiviteFile;
     }
 }
