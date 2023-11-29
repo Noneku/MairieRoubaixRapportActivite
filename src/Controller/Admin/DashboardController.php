@@ -49,15 +49,13 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 
-        // Créez une section "Gestion des Entités" pour organiser vos éléments de menu
+        // Create a section in bar menu
         yield MenuItem::section('Gestion des Entités');
 
-        // Ajoutez des liens vers vos contrôleurs CRUD pour les entités "Pole" et "IndexPole"
+        // Add link to controller CRUD
         yield MenuItem::linkToCrud('Poles', 'fa fa-tags', Pole::class);
         yield MenuItem::linkToCrud('IndexPole', 'fa fa-tags', IndexPole::class);
         yield MenuItem::linkToCrud('Rapport-Activté', 'fa fa-tags', RapportActivite::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fa fa-tags', User::class);
-
-        // Vous pouvez ajouter d'autres éléments de menu ici
     }
 }

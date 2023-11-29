@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $poleIndexData = $poleIndexData = [
+         $poleIndexData = [
             'Cabinet' => [
                 "Cabinet du Maire" => "cabinet-du-maire",
                 "Direction de la Communication" => "direction-de-la-communication",

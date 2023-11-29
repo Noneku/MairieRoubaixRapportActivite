@@ -9,19 +9,19 @@ class WordDocumentGenerator
 {
     public function generateDocument($rapportActivite, $indicateurFile, $realisationFile, $perspectiveFile)
     {
-        // Initialisation de PHPWord
+        // Initializing PHPWord
         $phpWord = new PhpWord();
         $section = $phpWord->addSection();
 
-        // Ajout de contenu au document
+        // Adding content to the document
         $section->addText('Rapport d\'activité');
         $section->addText('Mission Principale: ' . $rapportActivite->getMissionPrincipale());
         $section->addText('Indicateur: ' . $rapportActivite->getIndicateur());
         $section->addText('Réalisation: ' . $rapportActivite->getRealisation());
         $section->addText('Perspective: ' . $rapportActivite->getPerspective());
 
-        // Génération du document Word
-        $filename = 'rapport_activite_'. $rapportActivite->getId() . '.docx';
+        // Generating the Word document
+        $filename = 'rapportDownload/rapport_activite_'. $rapportActivite->getId() .'.docx';
         $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($filename);
 
