@@ -120,7 +120,7 @@ class RapportActiviteController extends AbstractController
                 );
                 $responseFile->headers->set(
                     'Content-Disposition',
-                    'attachment; filename="rapport_activite_N°' . $rapportActivite->getId() . '.docx"'
+                    'attachment; filename="rapportDownload/rapport_activite_' . $rapportActivite->getId() . '.docx"'
                 );
 
                 // Clean up temporary files
